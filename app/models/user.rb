@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :organization
+
+  validates :email, presence: true, uniqueness: true
+
 end

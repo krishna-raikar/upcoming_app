@@ -3,17 +3,28 @@
   <head>
     <title>UpcomingApp</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width" />
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-    <% end %>
-    <%= yield %>
+
+    <div class='container'>
+
+      <% if flash.keys.present? %>
+      <div class='text-center p-3'>
+        <span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span>
+      </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
+
+
+
+

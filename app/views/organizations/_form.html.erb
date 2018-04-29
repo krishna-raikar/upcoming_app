@@ -1,72 +1,113 @@
-<%= form_for(organization) do |f| %>
-  <% if organization.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
 
-      <ul>
-      <% organization.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+  <div class='col-md-12'>
+
+  <%= form_for(organization, data: { 'unique-org-url': unique_org_name_check_organizations_path}) do |f| %>
+    <div class='row'>
+      <div class="col-md-12">
+        <% if organization.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+
+            <ul>
+            <% organization.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class='row'>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.text_field :org_name, autofocus: true, class:'form-control', placeholder: 'Enter Org Name(req)' %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.text_field :first_name, class:'form-control', placeholder: 'First Name(req)'  %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class='row'>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class='col-sm-2 col-form-label'>Org Identifier:</label>
+          <div class="col-sm-10">
+          <%= f.text_field :org_identifier, class:'form-control', placeholder: 'enter_org_name',:readonly => true  %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.text_field :last_name, class:'form-control', placeholder: 'Last Name(req)'  %>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-md-6 offset-md-3">
+        <div class="form-group">
+          <%= f.text_field :addr_line1, class:'form-control', placeholder: 'Line 1(req)'  %>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-md-6 offset-md-3">
+        <div class="form-group">
+          <%= f.text_field :addr_line2, class:'form-control', placeholder: 'Line 2'  %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class='row'>
+    <div class="col-md-6 offset-md-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :city, class:'form-control', placeholder: 'City(req)'  %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :state, class:'form-control', placeholder: 'State'  %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class='row'>
+    <div class="col-md-6 offset-md-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :country, class:'form-control', placeholder: 'Country(req)'  %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.number_field :zipcode, class:'form-control', placeholder: 'ZipCode(req)'  %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-primary' %>
+        <%= link_to 'Back', organizations_path, class: 'btn btn-info' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :org_name %>
-    <%= f.text_field :org_name %>
   </div>
-
-  <div class="field">
-    <%= f.label :org_identifier %>
-    <%= f.text_field :org_identifier %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :addr_line1 %>
-    <%= f.text_field :addr_line1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :addr_line2 %>
-    <%= f.text_field :addr_line2 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country %>
-    <%= f.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= f.label :zipcode %>
-    <%= f.number_field :zipcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

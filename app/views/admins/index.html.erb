@@ -1,0 +1,30 @@
+<div class="row">
+  <div class='col-md-12'>
+  <table class='table' id='org_list'>
+  <thead>
+    <th>ID</th>
+    <th>Org name</th>
+    <th>Org Identifier</th>
+    <th>Created_by</th>
+    <th>Country</th>
+    <th>Created_at</th>
+    <th>Updated_at</th>
+  </thead>
+  <tbody>
+    <% @organizations.each do | org | %>
+    <tr>
+      <td><%=org.id%></td>
+      <td><%=org.org_name%></td>
+      <td><%=org.org_identifier%></td>
+      <td><%=org.user.email%></td>
+      <td><%=org.country%></td>
+      <td><%=org.created_at%></td>
+      <td><%=org.updated_at%></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  </div>
+</div>
+
+

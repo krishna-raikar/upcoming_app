@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UpcomingApp</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width" />
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Upcoming App</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+
+          <% if current_user.is_admin %>
+            <li class="nav-item">
+              <%= link_to "Admin", admins_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+
+
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <div class='container' style="padding-top: 4.5em">
+
+      <% if flash.keys.present? %>
+      <div class='text-center'>
+        <span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span>
+      </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
+
+
+
+

@@ -1,8 +1,5 @@
 class OrganizationsController < ApplicationController
-
-  before_action :authenticate_user!
-
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  layout 'postlogin'
 
   # GET /organizations/new
   def new
@@ -24,7 +21,17 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def unique_org_name_check
+    respond_to do | format |
+      format.json { render json: is_org_unique?(params["organization"]["org_name"])}
+    end
+  end
+
   private
+
+    def is_org_unique?(org_name)
+      Organization.find_by(org_name: org_name).blank?
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params

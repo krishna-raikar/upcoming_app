@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class OrganizationTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "Create Organization without org name" do
+    org = Organization.create
+    assert_not org.valid?
+  end
 end
